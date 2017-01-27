@@ -78,5 +78,22 @@ class ViewController: UIViewController {
         
         player.seek(to: CMTime(seconds: newPosition, preferredTimescale: 1000))
     }
+    @IBAction func rateChange(_ sender: UISlider) {
+        guard let item = player.currentItem else {
+            return
+        }
+        player.rate = sender.value
+        
+        if item.status == .readyToPlay {
+            player.pause()
+        }
+    }
+    @IBAction func pauseButton(_ sender: UIButton) {
+//        guard let item = player.currentItem else {
+//            return
+//        }
+        player.pause()
+    }
+
 }
 
